@@ -1,14 +1,12 @@
 #ifndef MY_PAINT_H
 #define MY_PAINT_H
 
-#include <QOpenGLWidget>
+#include <QGLWidget>
 
-class My_Paint : public QOpenGLWidget
+class My_Paint : public QGLWidget
 {
 public:
-    My_Paint(QWidget *parent) : QOpenGLWidget(parent) { }
-
-protected:
+    My_Paint();
     void initializeGL();
     void paintGL();
     void resizeGL(int w, int h);
