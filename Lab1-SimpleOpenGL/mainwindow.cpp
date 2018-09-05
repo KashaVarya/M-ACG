@@ -7,6 +7,9 @@ MainWindow::MainWindow(QWidget *parent) :
     ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
+    QPixmap myPixmap( ":/MyHome.jpg" );
+    ui->label_image->setPixmap(myPixmap);
+    ui->label_image->show();
 }
 
 MainWindow::~MainWindow()

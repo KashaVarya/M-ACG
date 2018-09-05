@@ -20,3 +20,6 @@ HEADERS  += mainwindow.h \
     my_paint.h
 
 FORMS    += mainwindow.ui
+
+RESOURCES += \
+    resources.qrc
