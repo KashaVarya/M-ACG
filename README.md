@@ -1,2 +1,2 @@
 # M-ACG
-Laboratory works for Modeling and Analysis Computer Graphics course
+Laboratory works for Methods and Algorithms of Computer Graphics course
