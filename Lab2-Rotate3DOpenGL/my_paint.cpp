@@ -71,7 +71,7 @@ My_Paint::My_Paint(QWidget *parent) // конструктор
 
 void My_Paint::initializeGL() {
     qglClearColor(QColor(245, 245, 208)); // заполняем фон
-    glEnable(GL_DEPTH_TEST); // задаем глубину проверки пикселей - будут ли видны противоположные грани
+    //glEnable(GL_DEPTH_TEST); // задаем глубину проверки пикселей - будут ли видны противоположные грани
     glShadeModel(GL_FLAT); // убираем режим сглаживания цветов
     glPolygonMode(GL_BACK, GL_FRONT_FACE); // фигуры будут закрашены с обеих сторон
 
