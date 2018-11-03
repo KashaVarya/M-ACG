@@ -1,10 +1,9 @@
-// Урок 45
 // Волны
 #include <GL/glut.h>
 #include <cmath>
 
-const float K = 40;
-const float DT = 0.03;
+const float K = 100; // скорость угасания колебаний
+const float DT = 0.03; // скорость распространения колебаний
 
 float sqr(float x)
 {
@@ -26,10 +25,13 @@ P p[N][N];
 
 void display()
 {
+    // рисуем сетку
     glClear(GL_COLOR_BUFFER_BIT);
     for (int x = 0; x < N; ++x)
     {
         glBegin(GL_LINE_STRIP);
+        //glColor3f(0.655, 0.655, 0.955);
+        glColor3f(0.05, 0.005, 0.05);
         for (int y = 0; y < N; ++y)
             glVertex3f(p[x][y].x, p[x][y].y, p[x][y].z * 10);
         glEnd();
@@ -46,6 +48,7 @@ void display()
 
 void timer(int = 0)
 {
+    // рандомно в одном из 4 направлений вызываем колебание (изменение z координаты точки сетки)
     const int dx[] = {-1, 0, 1, 0};
     const int dy[] = {0, 1, 0, -1};
     if (rand() % 500 == 0)
@@ -59,7 +62,7 @@ void timer(int = 0)
                 P &p1 = p[x + dx[i]][y + dy[i]];
                 const float d = sqrt(sqr(p0.x - p1.x) + sqr(p0.y - p1.y) + sqr(p0.z - p1.z));
                 p0.vz += K * (p1.z - p0.z) / d * DT;
-                p0.vz *= 0.999;
+                p0.vz *= 0.998; // коэффициент трения
             }
 
         }
@@ -85,8 +88,9 @@ int main(int argc, char **argv)
     glutInitDisplayMode(GLUT_DOUBLE | GLUT_RGB);
     glutInitWindowSize(852, 480);
     glutInitWindowPosition(0, 86);
-    glutCreateWindow("3d plot");
-    glClearColor(0, 0, 0, 1.0);
+    glutCreateWindow("'3d wave effect', Khokhlova Varvara, KNT-415, 2018");
+    //glClearColor(0.008, 0.003, 0.231, 1.0);
+    glClearColor(0.999, 0.999, 0.999, 1.0);
 
     glMatrixMode(GL_PROJECTION);
     glLoadIdentity();
